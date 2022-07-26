@@ -33,10 +33,8 @@ public class Main {
                 mainOpt = mainMenu();
             }
         } catch(SQLException se) {
-            //Handle errors for JDBC
             se.printStackTrace();
         } catch(Exception e) {
-            //Handle errors for Class.forName
             e.printStackTrace();
         }
     }
@@ -333,7 +331,6 @@ public class Main {
         System.out.println("Enter the company name:");
         Scanner scanner = new Scanner(System.in);
         String tableNameStr = scanner.nextLine();
-        //String tableName = tableNameStr.replaceAll(" ", "_");
 
         Statement stmt = conn.createStatement();
         String sql =  "INSERT INTO COMPANY (NAME) " +
