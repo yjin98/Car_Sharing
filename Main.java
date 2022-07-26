@@ -338,14 +338,7 @@ public class Main {
         Statement stmt = conn.createStatement();
         String sql =  "INSERT INTO COMPANY (NAME) " +
                 "VALUES ('" + tableNameStr + "');";
-        stmt.executeUpdate(sql); //Add company name to company table
-
-        /* Create table named by companyName
-        sql =  "CREATE TABLE " + tableName +
-                " (ID INTEGER PRIMARY KEY AUTO_INCREMENT, " +
-                " NAME VARCHAR(255) NOT NULL UNIQUE);";
         stmt.executeUpdate(sql);
-        */
         System.out.println("The company was created!");
         stmt.close();
     }
@@ -369,7 +362,7 @@ public class Main {
                 companyMenuOpt = companyMenu();
                 System.out.println();
             }
-            companyOpt = 0;//companyList(conn);
+            companyOpt = 0;
         }
     }
 
@@ -385,12 +378,12 @@ public class Main {
             int i = rs.getInt("ID");
             companyName = rs.getString("NAME");
             companyArray.add(companyName);
-            System.out.println(i + ". " + companyName/*.replaceAll("_", " ")*/);
+            System.out.println(i + ". " + companyName);
             while (rs.next()) {
                 i = rs.getInt("ID");
                 companyName = rs.getString("NAME");
                 companyArray.add(companyName);
-                System.out.println(i + ". " + companyName/*.replaceAll("_", " ")*/);
+                System.out.println(i + ". " + companyName);
             }
             System.out.println("0. Back");
             Scanner scanner = new Scanner(System.in);
@@ -407,15 +400,6 @@ public class Main {
     }
 
     public static int companyMenu() {
-        /*
-        Statement stmt = conn.createStatement();
-        String sql = "SELECT NAME FROM COMPANY WHERE ID=" + companyID + ";";
-        ResultSet rs = stmt.executeQuery(sql);
-        String companyName = "'" + rs.getString("NAME") + "'";
-        stmt.close();
-        System.out.println(companyName + " company");
-
-         */
         System.out.println("1. Car list");
         System.out.println("2. Create a car");
         System.out.println("0. Back");
@@ -513,47 +497,3 @@ public class Main {
     }
 }
 
-
-
-
-
-/*
-Connection conn = null;
-        Statement stmt = null;
- */
-
-/*
-// STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-
-            //STEP 2: Open a connection
-            conn = DriverManager.getConnection(DB_URL);
-
-            //STEP 3: Execute a query
-            stmt = conn.createStatement();
-            String sql =  "CREATE TABLE   COMPANY " +
-                    "(ID INTEGER PRIMARY KEY AUTO_INCREMENT, " +
-                    " NAME VARCHAR(255) NOT NULL UNIQUE);";
-            stmt.executeUpdate(sql);
-            System.out.println("Created table in given database...");
-
-            // STEP 4: Clean-up environment
-            stmt.close();
-            conn.close();
- */
-
-/*
- finally {
-            //finally block used to close resources
-            try{
-                if(stmt!=null) stmt.close();
-            } catch(SQLException se2) {
-                se2.printStackTrace();
-            } // nothing we can do
-            try {
-                if(conn!=null) conn.close();
-            } catch(SQLException se){
-                se.printStackTrace();
-            } //end finally try
-        } //end try
- */
